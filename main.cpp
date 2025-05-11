@@ -1,10 +1,8 @@
-///////////////////////// TO-DO (1) //////////////////////////////
-  /// Include necessary header files
-  /// Hint:  Include what you use, use what you include
-  ///
-  /// Do not put anything else in this section, i.e. comments, classes, functions, etc.  Only #include directives
-
-/////////////////////// END-TO-DO (1) ////////////////////////////
+#include "WordFrequency.hpp"
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <unordered_map>
 
 
 // unnamed, anonymous namespace providing non-member private working area
@@ -26,12 +24,14 @@ namespace
 
   struct MyCustomHasher
   {
-    // Implement operator()( const std::string & ) const noexcept - See requirements
     std::size_t operator()( const std::string & key ) const noexcept
     {
-      ///////////////////////// TO-DO (2) //////////////////////////////
-
-      /////////////////////// END-TO-DO (2) ////////////////////////////
+      std::size_t hash = 0;
+      for (char c : key)
+      {
+        hash = hash * 31 + static_cast<unsigned char>(c);
+      }
+      return hash;
     }
   };
 }
